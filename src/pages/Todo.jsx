@@ -42,22 +42,26 @@ function Todo() {
 
   return (
     <div className="container">
+      <div className="header">
+        TODO LIST / {JSON.stringify(new Date().toLocaleDateString())}
+      </div>
       <ul className="todolist">
-        {todoList.map((todo) => (
-          <div className={todo.stat ? "todo checked" : "todo"} key={todo.id}>
-            <input
-              onChange={() => handleChecked(todo.id)}
-              className="todo__ckbox"
-              type="checkbox"
-              checked={todo.stat}
-            />
-            <li className="todo__title">{todo.title}</li>
-            <BsFillTrashFill
-              className="todo__trash"
-              onClick={() => handleDelete(todo.id)}
-            />
-          </div>
-        ))}
+        {todoList &&
+          todoList.map((todo) => (
+            <div className={todo.stat ? "todo checked" : "todo"} key={todo.id}>
+              <input
+                onChange={() => handleChecked(todo.id)}
+                className="todo__ckbox"
+                type="checkbox"
+                checked={todo.stat}
+              />
+              <li className="todo__title">{todo.title}</li>
+              <BsFillTrashFill
+                className="todo__trash"
+                onClick={() => handleDelete(todo.id)}
+              />
+            </div>
+          ))}
       </ul>
       <form className="todo__add" onSubmit={handleSubmit}>
         <input
