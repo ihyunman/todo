@@ -21,7 +21,7 @@ function Todo() {
     },
   ]);
   const [title, setTitle] = useState("");
-  const currIndex = useRef(4);
+  const currIndex = useRef(todoList.length + 1);
   const handleSubmit = (e) => {
     e.preventDefault();
     setTodoList([...todoList, { id: currIndex.current, title, stat: false }]);
