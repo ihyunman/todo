@@ -21,7 +21,6 @@ ul {
   height: 400px;
   border: 1px solid lightcoral;
   border-radius: 5px;
-
   box-shadow: 10px 5px 5px gray;
 }
 
@@ -29,7 +28,7 @@ ul {
   font-size: 24px;
   color: darksalmon;
   border-bottom: 1px dashed lightcoral;
-  margin: 10px 0;
+  margin: 10px auto;
 }
 
 .todolist {

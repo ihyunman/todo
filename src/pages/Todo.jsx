@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { BsFillTrashFill } from "react-icons/bs";
+import checkDuplicate from "../util/CheckDuplicate";
 
 function Todo() {
   const [todoList, setTodoList] = useState([
@@ -24,8 +25,13 @@ function Todo() {
   const currIndex = useRef(todoList.length + 1);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodoList([...todoList, { id: currIndex.current, title, stat: false }]);
-    currIndex.current = currIndex.current + 1;
+    const check = checkDuplicate(todoList, title);
+    if (check) {
+      setTodoList([...todoList, { id: currIndex.current, title, stat: false }]);
+      currIndex.current = currIndex.current + 1;
+    } else {
+      alert("Duplicated");
+    }
   };
 
   const handleChecked = (id) => {
