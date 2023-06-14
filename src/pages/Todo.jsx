@@ -43,7 +43,8 @@ function Todo() {
   return (
     <div className="container">
       <div className="header">
-        TODO LIST / {JSON.stringify(new Date().toLocaleDateString())}
+        TODO LIST /{" "}
+        {JSON.stringify(new Date().toLocaleDateString()).replaceAll(`"`, "")}
       </div>
       <ul className="todolist">
         {todoList &&
@@ -55,7 +56,12 @@ function Todo() {
                 type="checkbox"
                 checked={todo.stat}
               />
-              <li className="todo__title">{todo.title}</li>
+              <li
+                className="todo__title"
+                onClick={() => handleChecked(todo.id)}
+              >
+                {todo.title}
+              </li>
               <BsFillTrashFill
                 className="todo__trash"
                 onClick={() => handleDelete(todo.id)}
